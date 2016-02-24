@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div id="wrapper">
+    <header>
+      <h1>Time tracking tool</h1>
+    </header>
+<!-- El yield pertenece a projects/index.html.erb -->
 <%= yield %>
-
+  <footer>
+    Ironhack - Rails introduction
+  </footer>
+  </div>
 </body>
 </html>

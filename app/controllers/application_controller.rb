@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   def index
     @projects = Project.last_created_projects(10)
   end
+
+  def render_404(params)
+    Rails.logger.warn("Tried to access #{params[:id]} which did not exist.")
+    render "/layouts/404"
+  end
   
 
 end

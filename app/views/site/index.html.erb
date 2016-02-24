@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <ul>
+<h1>Aquí están tus proyectos</h1>
+<ul>
   <% @projects.each do |project| %>
-  <!-- 2 maneras de hacerlo para mostrar los elementos por pantalla en el caso de que description no esté vacío -->
     <li>
       <%= project.name %>
       <% unless project.description.blank? %>
-      <%= "- #{project.description}" %></li>
-    <% end %>
-    <%= project.description.nil? ? project.name : "#{project.name} - #{}"
-    <li>
+        <%= " - #{project.description}" %>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
-</body>
-</html>
