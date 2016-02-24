@@ -9,5 +9,8 @@
     <%end%>
 </ul>
 
+<%= link_to 'Projects', projects_path %>
+<%= link_to 'New Entry', new_project_entry_path(@project) %>
+
 <!-- @current_month_hours lo definimos en el controlador del proyecto-->
 <p> The total hours worked this month is: <%= @current_month_hours %></p>

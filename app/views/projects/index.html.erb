@@ -1,0 +1,11 @@
+<h1>Your projects</h1>
+
+<ul>
+  <% @projects.each do |project| %>
+  <li><%= link_to(project.name, project_entries_path(project)) %>
+    <% if project.description.present? %>
+      <%= "-#{project.description}" %>
+    <%end %>
+  </li>
+  <%end %>
+</ul>
