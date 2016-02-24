@@ -12,4 +12,11 @@ class EntriesController < ApplicationController
   def show
     @project = Project.find params [:id]
   end
+
+  def new
+    #El project_id viene a través de la uri
+    @project = Project.find params[:project_id]
+    #Inicializas la entrada
+    @entry = @project.entries.new
+  end
 end

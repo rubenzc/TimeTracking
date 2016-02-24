@@ -3,10 +3,18 @@ Rails.application.routes.draw do
 
   get '/contact' => 'site#contact'
 
-  get '/projects' => 'projects#index'
+  resources :projects, only: [:index, :show] do
+    resources :entries, only: [:index, :new, :create]
+  end
 
-  get '/projects/:id' => 'projects#show'
+  #Todo esto ya no es necesario dado que las
+  #3 líneas de arriba realizan el mismo trabajo
+  #Haz un rake routes para ver todas las rutas
+  # get '/projects' => 'projects#index'
 
-  get '/projects/:project_id/entries' => 'entries#index'
+  # get '/projects/:id' => 'projects#show'
 
+  # get '/projects/:project_id/entries' => 'entries#index'
+
+  # get '/projects/:project_id/entries/new' => 'entries#new'
 end
