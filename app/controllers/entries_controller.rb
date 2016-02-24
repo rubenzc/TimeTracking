@@ -19,4 +19,24 @@ class EntriesController < ApplicationController
     #Inicializas la entrada
     @entry = @project.entries.new
   end
+
+  def create
+    #Find the project
+    @project = Project.find params[:project_id]
+    #New entry for that project with attributes from params[:entry]
+    @entry = @project.entries.new entry_params
+    #Try to save it
+    if@entry.save
+      redirect_to action: :index, project_id: @project.id
+    else
+      render 'new'
+    end
+  end
+  #Con este método filtro a través de los strong parameters
+  #que no accedan más variables de las que yo quiero
+
+  def entry_params
+    params.require(:entry).permit(:hours, :minutes, :date)
+  end
+
 end
