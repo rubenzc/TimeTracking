@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
   def show
     @project = Project.find params [:id]
   end
-
+  #Muestra formulario de crear
   def new
     #El project_id viene a través de la uri
     @project = Project.find params[:project_id]
@@ -32,9 +32,33 @@ class EntriesController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+    @project = Project.find(params[:project_id])
+    @entry = @project.entries.find(params[:id])
+  end
+
+  def update
+    #Find the project
+    @project = Project.find(params[:project_id])
+    #FInd the entry for that project with attributes from params[:id]
+    @entry = @project.entries.find(params[:id])
+    #Try to save it
+    if @entry.update_attributes entry_params
+      redirect_to action: 'index'
+    else  
+      render 'edit'
+    end
+  end
+
+  private
+
+  # def project
+  #   @_project ||= Project.find(params[:project_id])
+  # end
+
   #Con este método filtro a través de los strong parameters
   #que no accedan más variables de las que yo quiero
-
   def entry_params
     params.require(:entry).permit(:hours, :minutes, :date)
   end
