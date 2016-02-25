@@ -51,6 +51,17 @@ class EntriesController < ApplicationController
     end
   end
 
+  #Aquí buscamos una entry y la borramos
+  def destroy
+    #No hace falta el @ porque no lo vamos a devolver a una vista
+    project = Project.find(params[:project_id])
+    entry = project.entries.find(params[:id])
+    #entry
+    entry.destroy
+
+    redirect_to action: :index, project_id: project.id
+  end
+
   private
 
   # def project

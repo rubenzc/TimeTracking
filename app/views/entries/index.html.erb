@@ -6,12 +6,14 @@
       <%= entry.minutes %>m
       <%= entry.date.to_date %> -
       <%= link_to 'Edit', edit_project_entry_path(@project, entry) %>
+      <%= link_to('Delete', project_entry_path(@project, entry), method: :delete,data:{confirm: 'Are you sure?'}) %>
     </li>
     <%end%>
 </ul>
 
 <%= link_to 'Projects', projects_path %>
 <%= link_to 'New Entry', new_project_entry_path(@project) %>
+
 
 
 <!-- @current_month_hours lo definimos en el controlador del proyecto-->
